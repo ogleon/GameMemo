@@ -46,15 +46,6 @@ class CardViewModel : ViewModel() {
         MutableLiveData<Int>()
     }
 
-    //other variables
-    private var _cardsMatchedScore: Int = 0
-    private var cardsMatchedScore = MutableLiveData<Int>()
-    private var allMatchedCards = MutableLiveData<Boolean>()
-
-    //MOVEMENTS VARIABLES
-    private var movesCounter: Int = 0
-    private var movesLiveData = MutableLiveData<Int>()
-
     init {
         val cardsFromProvider = CardProvider.getCardsLevelHard()
         cards.forEachIndexed { index, card ->
@@ -65,29 +56,30 @@ class CardViewModel : ViewModel() {
         clicked.postValue(_clicked)
         turnOver.postValue(_turnOver)
         lastClicked.postValue(_lastClicked)
-        movesLiveData.postValue(movesCounter)
-        cardsMatchedScore.postValue(_cardsMatchedScore)
-        allMatchedCards.postValue(false)
+
     }
 
     fun updateModels(position: Int) {
         val card = cards[position]
-        // Error checking:
-        if (card.value!!.isFaceUp) {
-            return
+        if (card.value!!.isFaceUp && !turnOver.value!!) {
+            if (clicked.value == 0) {
+                lastClicked.value = position
+            }
+            clicked.value = _clicked++
+        } else if (!card.value!!.isFaceUp) {
+            clicked.value = _clicked--
         }
-        // Three cases
-        // 0 cards previously flipped over => restore cards + flip over the selected card
-        // 1 card previously flipped over => flip over the selected card + check if the images match
-        // 2 cards previously flipped over => restore cards + flip over the selected card
-        if (indexOfSingleSelectedCard.value == null) {
-            // 0 or 2 selected cards previously
-            restoreCards()
-            indexOfSingleSelectedCard.postValue(position)
-        } else {
-            // exactly 1 card was selected previously
-            checkForMatch(indexOfSingleSelectedCard.value!!.toInt(), position)
-            indexOfSingleSelectedCard.postValue(null)
+
+        if (clicked.value == 2) {
+            turnOver.value = true
+            checkForMatch(card.value!!.id, cards[lastClicked.value!!].value!!.id)
+
+            buttons[i].isClickable = false
+            buttons[lastClicked].isClickable = false
+            turnOver.value = false
+            clicked.value = 0
+        } else if (clicked.value == 0) {
+            turnOver.value = false
         }
         card.value!!.isFaceUp = !card.value!!.isFaceUp
     }
