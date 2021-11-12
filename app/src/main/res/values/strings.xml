@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GameMemo</string>
+    <string name="defaultValueMoves">"Moves: "</string>
+</resources>
