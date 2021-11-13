@@ -1,4 +1,20 @@
 <resources>
-    <string name="app_name">GameMemo</string>
-    <string name="defaultValueMoves">"Moves: "</string>
+    <string name="app_name">MemoGame</string>
+    <string name="defaultValueTimer">000</string>
+    <string name="defaultValueMoves">Moves:</string>
+    <string name="menuScreenButton1">PLAY</string>
+    <string name="menuScreenButton2">help</string>
+    <string name="menuScreenAppTitle1">MemoGame</string>
+    <string name="menuScreenAppTitle2">Animals</string>
+    <string name="resultScreen_bPlayAgain">Play Again</string>
+    <string name="resultScreen_bMenu">MENU</string>
+    <string name="resultScreen_bShare">share</string>
+    <string name="placeholder">love</string>
+
+    <string-array name="Difficulties">
+        <item>Normal</item>
+        <item>Hard</item>
+    </string-array>
+
+
 </resources>

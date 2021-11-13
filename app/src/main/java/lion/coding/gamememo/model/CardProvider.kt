@@ -1,4 +1,4 @@
-package lion.coding.gamememo
+package lion.coding.gamememo.model
 
 import lion.coding.gamememo.R.drawable.*
 

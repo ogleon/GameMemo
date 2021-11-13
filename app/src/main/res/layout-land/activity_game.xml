@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".views.GameActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,8 +26,8 @@
             android:fontFamily="casual"
             android:gravity="center_vertical|end"
             android:text="@string/defaultValueMoves"
-            android:textColor="#263238"
-            android:textSize="25sp"
+            android:textColor="@color/white"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
@@ -38,7 +39,9 @@
             android:gravity="start|center_vertical"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
-            android:textSize="20sp" />
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textViewCounter"
@@ -48,297 +51,283 @@
             android:backgroundTint="@color/transparent_background"
             android:fontFamily="serif-monospace"
             android:gravity="start|center_vertical"
-            android:textSize="30sp" />
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
         <ImageButton
             android:id="@+id/pauseButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
             android:layout_weight="1"
+            android:theme="@style/buttonPause"
             android:scaleType="fitEnd"
             app:srcCompat="@drawable/ic_pause"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/LayoutCards0"
+    <LinearLayout
+        android:id="@+id/linearLayoutCards1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/LayoutCards1"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayoutCards2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <ImageButton
             android:id="@+id/imgButton01"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
-            android:outlineProvider="paddedBounds"
-            android:scaleType="centerInside"
-            app:layout_constraintBottom_toTopOf="@+id/imgButton02"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imgButton02"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/imgButton03"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgButton01"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imgButton03"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
-            android:adjustViewBounds="false"
-            android:cropToPadding="false"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/imgButton04"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgButton02"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imgButton04"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/imgButton05"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgButton03"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutCards2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayoutCards3"
+        app:layout_constraintStart_toEndOf="@+id/linearLayoutCards1"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <ImageButton
             android:id="@+id/imgButton05"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/imgButton06"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgButton04"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imgButton06"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/imgButton07"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgButton05"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imgButton07"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/imgButton08"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgButton06"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imgButton08"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgButton07"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/LayoutCards1"
+    <LinearLayout
+        android:id="@+id/linearLayoutCards3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/LayoutCards0"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayoutCards4"
+        app:layout_constraintStart_toEndOf="@+id/linearLayoutCards2"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <ImageButton
             android:id="@+id/imgButton09"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/imgButton10"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imgButton10"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/imgButton11"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgButton09"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imgButton11"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/imgButton12"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgButton10"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imgButton12"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/imgButton13"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgButton11"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutCards4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/linearLayoutCards3"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <ImageButton
             android:id="@+id/imgButton13"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/imgButton14"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgButton12"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imgButton14"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/imgButton15"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgButton13"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imgButton15"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/imgButton16"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgButton14"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
         <ImageButton
             android:id="@+id/imgButton16"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
             android:layout_marginTop="2dp"
             android:layout_marginEnd="2dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
             android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgButton15"
             app:srcCompat="@drawable/ic_default"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
