@@ -52,8 +52,10 @@ class GameActivity : AppCompatActivity() {
         gameEngine()
     }
 
+    //GAME FUNCTIONS
+
     private fun updateViews() {
-       checkIfAllMatched()
+        checkIfAllMatched()
         cardViewModel.cards.forEachIndexed { index, card ->
             val button = buttons[index]
             card.observe(this, {
@@ -67,18 +69,7 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
-        super.onSaveInstanceState(outState, outPersistentState)
-        cardViewModel.pauseCounter()
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        cardViewModel.resumeCounter()
-        updateViews()
-    }
-
-    private fun checkIfAllMatched(){
+    private fun checkIfAllMatched() {
         val cardsMatched = cardViewModel.cards.filter { it.value!!.isMatched }
         cardViewModel.cardsMatchedScore.value = cardsMatched.size
         if (cardsMatched.size == 16) {
@@ -91,7 +82,7 @@ class GameActivity : AppCompatActivity() {
         observeTimeLiveData()
         observeMovesLiveData()
         observeGameStatus()
-        observeFinished()
+        observeFinishedLiveData()
         buttons.forEachIndexed { index, button ->
             button.setOnClickListener {
                 cardViewModel.updateModels(index)
@@ -100,9 +91,38 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
+    private fun sendScores() {
+        val intent = Intent(this, ResultActivity::class.java)
+        intent.putExtra("score", binding.textViewMovesValue.text.toString())
+        intent.putExtra("matches", cardViewModel.cardsMatchedScore.value.toString())
+        intent.putExtra("activity", GameActivity::class.java.simpleName)
+        startActivity(intent)
+    }
+
+    private fun reloadGame() {
+        startActivity(Intent(this, GameActivity::class.java))
+    }
+
+    private fun showPauseDialog() {
+        val alertDialog = AlertDialog.Builder(this, R.style.AlertDialog)
+        alertDialog.apply {
+            setTitle(getString(R.string.titleAlertDialogPause))
+            setCancelable(false)
+            setPositiveButton(getString(R.string.option1AlertDialogPause)) { _, _ ->
+                reloadGame()
+            }
+            setNegativeButton(getString(R.string.option2AlertDialogPause)) { _, _ ->
+                setCancelable(true)
+                cardViewModel.resumeCounter()
+            }
+        }.create().show()
+    }
+
+    //OBSERVERS
+
     private fun observeGameStatus() {
-        val allCardsMatched = Observer<Boolean> { matched ->
-            if (matched) {
+        val allCardsMatched = Observer<Boolean> { allMatched ->
+            if (allMatched) {
                 sendScores()
             }
         }
@@ -125,7 +145,7 @@ class GameActivity : AppCompatActivity() {
         cardViewModel.secondsLiveData.observe(this, secondsObserve)
     }
 
-    private fun observeFinished() {
+    private fun observeFinishedLiveData() {
         val finished = Observer<Boolean> { finish ->
             if (finish) {
                 sendScores()
@@ -134,31 +154,16 @@ class GameActivity : AppCompatActivity() {
         cardViewModel.finished.observe(this, finished)
     }
 
-    private fun sendScores() {
-        val intent = Intent(this, ResultActivity::class.java)
-        intent.putExtra("score", binding.textViewMovesValue.text.toString())
-        intent.putExtra("matches", cardViewModel.cardsMatchedScore.value.toString())
-        intent.putExtra("activity", GameActivity::class.java.simpleName)
-        startActivity(intent)
+    //HANDLES SCREEN ROTATIONS
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        cardViewModel.pauseCounter()
     }
 
-    private fun showPauseDialog() {
-        val alertDialog = AlertDialog.Builder(this)
-        alertDialog.apply {
-            setTitle("Pause Menu")
-            setCancelable(false)
-
-            setPositiveButton("Restart") { _, _ ->
-                reloadGame()
-            }
-            setNegativeButton("Return") { _, _ ->
-                setCancelable(true)
-                cardViewModel.resumeCounter()
-            }
-        }.create().show()
-    }
-
-    private fun reloadGame() {
-        startActivity(Intent(this, GameActivity::class.java))
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        cardViewModel.resumeCounter()
+        updateViews()
     }
 }

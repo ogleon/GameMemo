@@ -30,21 +30,7 @@ class CardViewModel2 : ViewModel() {
         MutableLiveData<Int>()
     }
 
-//    private var _clicked = 0
-//    val clicked: MutableLiveData<Int> by lazy {
-//        MutableLiveData<Int>()
-//    }
-//
-//    private var _turnOver = false
-//    val turnOver: MutableLiveData<Boolean> by lazy {
-//        MutableLiveData<Boolean>()
-//    }
-//    private var _lastClicked = -1
-//    private val lastClicked: MutableLiveData<Int> by lazy {
-//        MutableLiveData<Int>()
-//    }
-
-    //other variables
+    //CARDS-MATCHED VARIABLES
     var cardsMatchedScore = MutableLiveData<Int>()
     var allMatchedCards = MutableLiveData<Boolean>()
 
@@ -71,9 +57,6 @@ class CardViewModel2 : ViewModel() {
             card.value = c
         }
 
-//        clicked.postValue(_clicked)
-//        turnOver.postValue(_turnOver)
-//        lastClicked.postValue(_lastClicked)
         movesLiveData.postValue(movesCounter)
         cardsMatchedScore.postValue(0)
         allMatchedCards.postValue(false)
@@ -110,6 +93,8 @@ class CardViewModel2 : ViewModel() {
             }
         }
     }
+
+    //TIMER
 
     private fun checkForMatch(position1: Int, position2: Int) {
         if (cards[position1].value!!.id == cards[position2].value!!.id) {

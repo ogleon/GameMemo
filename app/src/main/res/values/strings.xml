@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MemoGame</string>
+    <string name="app_name">MG: ANIMALS</string>
     <string name="defaultValueTimer">000</string>
     <string name="defaultValueMoves">Moves:</string>
     <string name="menuScreenButton1">PLAY</string>
@@ -10,6 +10,9 @@
     <string name="resultScreen_bMenu">MENU</string>
     <string name="resultScreen_bShare">share</string>
     <string name="placeholder">love</string>
+    <string name="titleAlertDialogPause">PAUSE MENU</string>
+    <string name="option1AlertDialogPause">Restart</string>
+    <string name="option2AlertDialogPause">Return</string>
 
     <string-array name="Difficulties">
         <item>Normal</item>

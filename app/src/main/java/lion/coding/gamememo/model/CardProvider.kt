@@ -4,7 +4,6 @@ import lion.coding.gamememo.R.drawable.*
 
 class CardProvider {
 
-
     companion object {
 
         private val imagesLevelHard: MutableList<Int> =
@@ -53,5 +52,4 @@ class CardProvider {
             return imagesLevelNormal
         }
     }
-
 }

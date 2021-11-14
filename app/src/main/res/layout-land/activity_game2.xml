@@ -54,7 +54,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:scaleType="fitEnd"
-            android:theme="@style/buttonPause"
+            android:theme="@style/generalButtons"
             app:srcCompat="@drawable/ic_pause"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 

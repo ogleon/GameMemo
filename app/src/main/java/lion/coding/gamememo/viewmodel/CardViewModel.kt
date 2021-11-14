@@ -32,25 +32,7 @@ class CardViewModel : ViewModel() {
         card10, card11, card12, card13, card14, card15, card16
     )
 
-    private val indexOfSingleSelectedCard: MutableLiveData<Int> by lazy {
-        MutableLiveData<Int>()
-    }
-
-//    private var _clicked = 0
-//    val clicked: MutableLiveData<Int> by lazy {
-//        MutableLiveData<Int>()
-//    }
-//
-//    private var _turnOver = false
-//    val turnOver: MutableLiveData<Boolean> by lazy {
-//        MutableLiveData<Boolean>()
-//    }
-//    private var _lastClicked = -1
-//    private val lastClicked: MutableLiveData<Int> by lazy {
-//        MutableLiveData<Int>()
-//    }
-
-    //other variables
+    //CARDS-MATCHED VARIABLES
     private var _cardsMatchedScore: Int = 0
     var cardsMatchedScore = MutableLiveData<Int>()
     var allMatchedCards = MutableLiveData<Boolean>()
@@ -71,6 +53,10 @@ class CardViewModel : ViewModel() {
     private val _finished = MutableLiveData<Boolean>()
     val finished: LiveData<Boolean> get() = _finished
 
+    private val indexOfSingleSelectedCard: MutableLiveData<Int> by lazy {
+        MutableLiveData<Int>()
+    }
+
     init {
         val cardsFromProvider = CardProvider.getCardsLevelHard()
         cards.forEachIndexed { index, card ->
@@ -78,9 +64,6 @@ class CardViewModel : ViewModel() {
             card.value = c
         }
 
-//        clicked.postValue(_clicked)
-//        turnOver.postValue(_turnOver)
-//        lastClicked.postValue(_lastClicked)
         movesLiveData.postValue(movesCounter)
         cardsMatchedScore.postValue(_cardsMatchedScore)
         allMatchedCards.postValue(false)
@@ -104,7 +87,7 @@ class CardViewModel : ViewModel() {
         // 2 cards previously flipped over => restore cards + flip over the selected card
         if (indexOfSingleSelectedCard.value == null) {
             // 0 or 2 selected cards previously
-                restoreCards()
+            restoreCards()
             indexOfSingleSelectedCard.postValue(position)
         } else {
             // exactly 1 card was selected previously
@@ -132,6 +115,8 @@ class CardViewModel : ViewModel() {
             cardsMatchedScore.postValue(_cardsMatchedScore)
         }
     }
+
+    //Timer
 
     fun pauseCounter() {
         isPaused = true

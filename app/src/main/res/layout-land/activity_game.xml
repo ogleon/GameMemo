@@ -61,7 +61,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:theme="@style/buttonPause"
+            android:theme="@style/generalButtons"
             android:scaleType="fitEnd"
             app:srcCompat="@drawable/ic_pause"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />

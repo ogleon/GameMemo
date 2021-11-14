@@ -7,7 +7,7 @@
     tools:context=".views.ResultActivity">
 
     <TextView
-        android:id="@+id/textView_scoreValue"
+        android:id="@+id/tvScoreValue"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
@@ -16,7 +16,6 @@
         android:layout_marginBottom="32dp"
         android:gravity="center"
         android:text="@string/placeholder"
-        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/bPlayAgain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,11 +30,11 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:text="@string/resultScreen_bPlayAgain"
-        android:textColor="@color/primaryTextColor"
+        android:theme="@style/generalButtons"
         app:layout_constraintBottom_toTopOf="@+id/bReturnMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_scoreValue" />
+        app:layout_constraintTop_toBottomOf="@+id/tvScoreValue" />
 
     <Button
         android:id="@+id/bReturnMenu"
@@ -46,7 +45,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="8dp"
         android:text="@string/resultScreen_bMenu"
-        android:textColor="@color/primaryTextColor"
+        android:theme="@style/generalButtons"
         app:layout_constraintBottom_toTopOf="@+id/bShareMenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +60,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:text="@string/resultScreen_bShare"
-        android:textColor="@color/primaryTextColor"
+        android:theme="@style/generalButtons"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

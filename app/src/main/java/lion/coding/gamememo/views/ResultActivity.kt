@@ -25,7 +25,7 @@ class ResultActivity : AppCompatActivity() {
         binding.bShareMenu.setOnClickListener {
             val sendIntent: Intent = Intent().apply {
                 action = Intent.ACTION_SEND
-                putExtra(Intent.EXTRA_TEXT, binding.textViewScoreValue.text)
+                putExtra(Intent.EXTRA_TEXT, binding.tvScoreValue.text)
                 type = "text/plain"
             }
             val shareIntent = Intent.createChooser(sendIntent, null)
@@ -49,10 +49,10 @@ class ResultActivity : AppCompatActivity() {
         val matches = intent.getStringExtra("matches")
         activity = intent.getStringExtra("activity")
         if (activity == "GameActivity2") {
-            binding.textViewScoreValue.text =
+            binding.tvScoreValue.text =
                 "Moves: " + score + "\n" + "Matches: " + (matches!!.toInt() / 2) + "/5"
         } else if (activity == "GameActivity") {
-            binding.textViewScoreValue.text =
+            binding.tvScoreValue.text =
                 "Moves: " + score + "\n" + "Matches: " + (matches!!.toInt() / 2) + "/8"
         }
     }

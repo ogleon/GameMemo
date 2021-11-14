@@ -46,7 +46,7 @@ class MenuActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     private fun showDefaultDialog() {
-        val alertDialog = AlertDialog.Builder(this)
+        val alertDialog = AlertDialog.Builder(this, R.style.AlertDialog)
         alertDialog.apply {
             setTitle("Instructions/Rules:")
             setMessage(
